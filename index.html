@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Aprende Español! - לומדים ספרדית לילדים</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <div id="app">
+        <!-- Main Menu Screen -->
+        <div id="main-menu" class="screen active">
+            <header class="app-header">
+                <h1>¡Aprende Español!</h1>
+                <p>לומדים ספרדית עם תמונות וצלילים כיפיים!</p>
+            </header>
+            
+            <main class="modules-grid">
+                <div class="module-card" data-module="numbers">
+                    <div class="module-icon">🔢</div>
+                    <h3>מספרים</h3>
+                    <p>Números</p>
+                </div>
+                
+                <div class="module-card" data-module="colors">
+                    <div class="module-icon">🎨</div>
+                    <h3>צבעים</h3>
+                    <p>Colores</p>
+                </div>
+                
+                <div class="module-card" data-module="family">
+                    <div class="module-icon">👨‍👩‍👧‍👦</div>
+                    <h3>משפחה</h3>
+                    <p>Familia</p>
+                </div>
+                
+                <div class="module-card" data-module="animals">
+                    <div class="module-icon">🐾</div>
+                    <h3>חיות</h3>
+                    <p>Animales</p>
+                </div>
+                
+                <div class="module-card" data-module="food">
+                    <div class="module-icon">🍎</div>
+                    <h3>אוכל</h3>
+                    <p>Comida</p>
+                </div>
+                
+                <div class="module-card" data-module="body">
+                    <div class="module-icon">👂</div>
+                    <h3>גוף</h3>
+                    <p>Cuerpo</p>
+                </div>
+            </main>
+        </div>
+
+        <!-- Module Content Screen -->
+        <div id="module-screen" class="screen">
+            <header class="module-header">
+                <button id="back-btn" class="back-button">← חזור</button>
+                <h2 id="module-title">Module Title</h2>
+            </header>
+            
+            <main id="items-grid" class="items-grid">
+                <!-- Items will be dynamically loaded here -->
+            </main>
+        </div>
+        
+        <!-- Audio Feedback -->
+        <div id="audio-feedback" class="audio-feedback">
+            <div class="audio-animation">🔊</div>
+        </div>
+    </div>
+
+    <script src="js/vocabulary.js"></script>
+    <script src="js/speech.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
