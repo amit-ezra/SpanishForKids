@@ -50,12 +50,16 @@ class SpanishApp {
     }
     
     updateVoiceInfo(voice) {
+        const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        
         if (voice.name.toLowerCase().includes('Elvira')) {
             this.currentVoiceElement.textContent = '🎉 Microsoft Elvira (מומלץ!)';
         } else if (voice.name.toLowerCase().includes('Alvaro')) {
             this.currentVoiceElement.textContent = '👍 Microsoft Alvaro';
         } else if (voice.name.toLowerCase().includes('microsoft')) {
             this.currentVoiceElement.textContent = `👌 ${voice.name}`;
+        } else if (isMobile && !voice.lang.startsWith('es')) {
+            this.currentVoiceElement.textContent = `📱 ${voice.name} (מתאים לנייד)`;
         } else {
             this.currentVoiceElement.textContent = `🔊 ${voice.name}`;
         }

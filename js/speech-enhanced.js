@@ -6,7 +6,9 @@ class EnhancedSpanishSpeech {
         this.selectedVoice = null;
         this.isSupported = 'speechSynthesis' in window;
         this.voiceLoadAttempts = 0;
-        this.maxVoiceLoadAttempts = 5;
+        this.maxVoiceLoadAttempts = 10; // Increased for mobile
+        this.isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        this.isAndroid = /Android/i.test(navigator.userAgent);
         
         // Voice priority list (in order of preference)
         this.voicePriority = [
@@ -127,7 +129,17 @@ class EnhancedSpanishSpeech {
             voice.lang.startsWith('es') || voice.lang.includes('spanish')
         );
         
-        return anySpanishVoice;
+        if (anySpanishVoice) {
+            return anySpanishVoice;
+        }
+        
+        // Android/Mobile fallback: use any voice and set Spanish language
+        if (this.isMobile && this.voices.length > 0) {
+            console.log('🔄 Mobile fallback: Using default voice with Spanish language');
+            return this.voices[0]; // Use first available voice
+        }
+        
+        return null;
     }
     
     speak(text) {
@@ -140,49 +152,87 @@ class EnhancedSpanishSpeech {
             // Cancel any ongoing speech
             this.synth.cancel();
             
-            // If no voice is selected yet, try to load voices again
-            if (!this.selectedVoice) {
-                this.loadVoices();
-                if (!this.selectedVoice) {
-                    console.warn('No Spanish voice available');
-                    resolve();
-                    return;
-                }
-            }
-            
-            const utterance = new SpeechSynthesisUtterance(text);
-            
-            // Configure utterance for optimal Spanish learning
-            utterance.text = text;
-            utterance.voice = this.selectedVoice;
-            utterance.lang = this.selectedVoice.lang || 'es-ES';
-            utterance.rate = 1;
-            utterance.pitch = 1;
-            utterance.volume = 1;
-
-            // Handle events
-            utterance.onend = () => {
-                console.log('Speech finished:', text);
-                resolve();
-            };
-            
-            utterance.onerror = (event) => {
-                console.error('Speech error:', event.error);
-                reject(event.error);
-            };
-            
-            utterance.onstart = () => {
-                console.log('🔊 Speaking:', text, 'with', this.selectedVoice.name);
-            };
-            
-            // Speak the text
-            try {
-                this.synth.speak(utterance);
-            } catch (error) {
-                console.error('Error starting speech:', error);
-                reject(error);
+            // Mobile workaround: Small delay to ensure cancel works
+            if (this.isMobile) {
+                setTimeout(() => this.performSpeak(text, resolve, reject), 100);
+            } else {
+                this.performSpeak(text, resolve, reject);
             }
         });
+    }
+    
+    performSpeak(text, resolve, reject) {
+        // If no voice is selected yet, try to load voices again
+        if (!this.selectedVoice) {
+            this.loadVoices();
+            if (!this.selectedVoice) {
+                console.warn('No voice available for speech');
+                resolve();
+                return;
+            }
+        }
+        
+        const utterance = new SpeechSynthesisUtterance(text);
+        
+        // Configure utterance for optimal Spanish learning
+        utterance.text = text;
+        utterance.voice = this.selectedVoice;
+        
+        // Force Spanish language even if voice isn't Spanish (mobile fallback)
+        if (this.isMobile && !this.selectedVoice.lang.startsWith('es')) {
+            utterance.lang = 'es-ES';
+            console.log('🔄 Mobile: Forcing Spanish language on non-Spanish voice');
+        } else {
+            utterance.lang = this.selectedVoice.lang || 'es-ES';
+        }
+        
+        utterance.rate = 1; // Slightly slower for learning
+        utterance.pitch = 1;
+        utterance.volume = 1;
+
+        // Handle events
+        utterance.onend = () => {
+            console.log('Speech finished:', text);
+            resolve();
+        };
+        
+        utterance.onerror = (event) => {
+            console.error('Speech error:', event.error);
+            // Don't reject on mobile - just resolve to prevent app breaking
+            if (this.isMobile) {
+                console.log('🔄 Mobile: Ignoring speech error, continuing...');
+                resolve();
+            } else {
+                reject(event.error);
+            }
+        };
+        
+        utterance.onstart = () => {
+            console.log('🔊 Speaking:', text, 'with', this.selectedVoice.name);
+        };
+        
+        // Speak the text
+        try {
+            this.synth.speak(utterance);
+            
+            // Mobile timeout fallback
+            if (this.isMobile) {
+                setTimeout(() => {
+                    if (this.synth.speaking) {
+                        console.log('🔄 Mobile: Speech timeout, resolving...');
+                        resolve();
+                    }
+                }, 5000);
+            }
+        } catch (error) {
+            console.error('Error starting speech:', error);
+            if (this.isMobile) {
+                console.log('🔄 Mobile: Fallback to silent mode');
+                resolve();
+            } else {
+                reject(error);
+            }
+        }
     }
     
     
