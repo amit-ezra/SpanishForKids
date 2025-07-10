@@ -74,6 +74,11 @@ class EnhancedSpanishSpeech {
     
     loadVoices() {
         this.voices = this.synth.getVoices();
+        // Add a short delay to give browsers more time to load voices
+        if (this.voices.length === 0) {
+            return new Promise(resolve => setTimeout(resolve, 1000))
+                .then(() => this.voices = this.synth.getVoices());
+        }
         
         if (this.voices.length === 0) {
             console.log('No voices loaded yet, will retry...');
