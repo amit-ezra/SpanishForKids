@@ -15,6 +15,15 @@
             <header class="app-header">
                 <h1>¡Aprende Español!</h1>
                 <p>לומדים ספרדית עם תמונות וצלילים כיפיים!</p>
+                <div id="voice-info" class="voice-info">
+                    <div class="voice-display">
+                        <span id="current-voice">טוען קולות...</span>
+                        <select id="voice-selector" class="voice-selector">
+                            <option value="">טוען קולות...</option>
+                        </select>
+                    </div>
+                    <button id="test-voice-btn" class="test-voice-btn">🔊 בדוק קול</button>
+                </div>
             </header>
             
             <main class="modules-grid">
@@ -75,7 +84,7 @@
     </div>
 
     <script src="js/vocabulary.js"></script>
-    <script src="js/speech.js"></script>
+    <script src="js/speech-enhanced.js"></script>
     <script src="js/app.js"></script>
 </body>
 </html>

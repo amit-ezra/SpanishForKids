@@ -11,6 +11,9 @@ class SpanishApp {
         this.itemsGrid = document.getElementById('items-grid');
         this.backButton = document.getElementById('back-btn');
         this.audioFeedback = document.getElementById('audio-feedback');
+        this.currentVoiceElement = document.getElementById('current-voice');
+        this.testVoiceButton = document.getElementById('test-voice-btn');
+        this.voiceSelector = document.getElementById('voice-selector');
         
         this.init();
     }
@@ -18,13 +21,144 @@ class SpanishApp {
     init() {
         this.setupEventListeners();
         this.showMainMenu();
+        this.initializeVoiceSystem();
+    }
+    
+    initializeVoiceSystem() {
+        // Initialize voice system and update UI
+        if (window.spanishSpeech) {
+            // Update voice info periodically until a voice is selected
+            const checkVoiceStatus = () => {
+                const selectedVoice = window.spanishSpeech.getSelectedVoice();
+                if (selectedVoice) {
+                    this.updateVoiceInfo(selectedVoice);
+                    this.populateVoiceDropdown();
+                    this.enableVoiceTesting();
+                } else {
+                    this.currentVoiceElement.textContent = 'טוען קולות...';
+                    this.testVoiceButton.disabled = true;
+                    setTimeout(checkVoiceStatus, 500);
+                }
+            };
+            
+            // Start checking after a brief delay
+            setTimeout(checkVoiceStatus, 100);
+        } else {
+            this.currentVoiceElement.textContent = 'קול לא זמין';
+            this.testVoiceButton.disabled = true;
+        }
+    }
+    
+    updateVoiceInfo(voice) {
+        if (voice.name.toLowerCase().includes('Elvira')) {
+            this.currentVoiceElement.textContent = '🎉 Microsoft Elvira (מומלץ!)';
+        } else if (voice.name.toLowerCase().includes('Alvaro')) {
+            this.currentVoiceElement.textContent = '👍 Microsoft Alvaro';
+        } else if (voice.name.toLowerCase().includes('microsoft')) {
+            this.currentVoiceElement.textContent = `👌 ${voice.name}`;
+        } else {
+            this.currentVoiceElement.textContent = `🔊 ${voice.name}`;
+        }
+    }
+    
+    enableVoiceTesting() {
+        this.testVoiceButton.disabled = false;
+        this.testVoiceButton.addEventListener('click', () => {
+            this.testCurrentVoice();
+        });
+    }
+    
+    populateVoiceDropdown() {
+        if (!window.spanishSpeech || !this.voiceSelector) return;
         
-        // Wait for voices to load before enabling speech
-        setTimeout(() => {
-            if (window.spanishSpeech) {
-                window.spanishSpeech.loadVoices();
+        const formattedVoices = window.spanishSpeech.getFormattedSpanishVoices();
+        const selectedVoice = window.spanishSpeech.getSelectedVoice();
+        
+        // Clear existing options
+        this.voiceSelector.innerHTML = '';
+        
+        if (formattedVoices.length === 0) {
+            const option = document.createElement('option');
+            option.value = '';
+            option.textContent = 'לא נמצאו קולות ספרדיים';
+            this.voiceSelector.appendChild(option);
+            this.voiceSelector.disabled = true;
+            return;
+        }
+        
+        // Add auto-select option
+        const autoOption = document.createElement('option');
+        autoOption.value = '';
+        autoOption.textContent = 'בחירה אוטומטית (מומלץ)';
+        this.voiceSelector.appendChild(autoOption);
+        
+        // Add all available voices
+        formattedVoices.forEach(voiceInfo => {
+            const option = document.createElement('option');
+            option.value = voiceInfo.value;
+            option.textContent = voiceInfo.display;
+            
+            if (voiceInfo.isRecommended) {
+                option.setAttribute('data-recommended', 'true');
             }
-        }, 1000);
+            
+            this.voiceSelector.appendChild(option);
+        });
+        
+        // Set current selection
+        if (selectedVoice) {
+            this.voiceSelector.value = selectedVoice.name;
+        }
+        
+        // Enable dropdown and add event listener
+        this.voiceSelector.disabled = false;
+        this.voiceSelector.addEventListener('change', (e) => {
+            this.onVoiceChange(e.target.value);
+        });
+        
+        console.log('✅ Voice dropdown populated with', formattedVoices.length, 'voices');
+    }
+    
+    async onVoiceChange(voiceName) {
+        if (!window.spanishSpeech) return;
+        
+        try {
+            // Set the new voice
+            const success = window.spanishSpeech.setVoice(voiceName);
+            
+            if (success) {
+                // Update the voice info display
+                const newVoice = window.spanishSpeech.getSelectedVoice();
+                this.updateVoiceInfo(newVoice);
+                
+                // Optional: Test the new voice
+                await this.testCurrentVoice();
+                
+                console.log('✅ Voice changed to:', voiceName || 'Auto-select');
+            } else {
+                console.warn('⚠️ Failed to change voice to:', voiceName);
+            }
+        } catch (error) {
+            console.error('❌ Error changing voice:', error);
+        }
+    }
+    
+    async testCurrentVoice() {
+        if (!window.spanishSpeech) return;
+        
+        try {
+            this.testVoiceButton.disabled = true;
+            this.testVoiceButton.textContent = '🔊 מנגן...';
+            
+            // Test with a friendly Spanish phrase
+            await window.spanishSpeech.speak('¡Hola! Soy tu profesora de español');
+            
+        } catch (error) {
+            console.error('Error testing voice:', error);
+        } finally {
+            this.testVoiceButton.disabled = false;
+            this.testVoiceButton.textContent = '🔊 בדוק קול';
+        }
     }
     
     setupEventListeners() {

@@ -61,6 +61,97 @@ body {
     font-weight: 600;
 }
 
+/* Voice Info Panel */
+.voice-info {
+    margin-top: 15px;
+    padding: 10px 15px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.voice-display {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+#current-voice {
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    opacity: 0.9;
+}
+
+.voice-selector {
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    min-width: 120px;
+}
+
+.voice-selector:hover {
+    background: rgba(255, 255, 255, 1);
+    border-color: #4ecdc4;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.voice-selector:focus {
+    outline: none;
+    border-color: #4ecdc4;
+    box-shadow: 0 0 0 3px rgba(78, 205, 196, 0.3);
+}
+
+.voice-selector option {
+    padding: 8px;
+    font-weight: 600;
+}
+
+.voice-selector option[data-recommended="true"] {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.test-voice-btn {
+    background: #4ecdc4;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(78, 205, 196, 0.3);
+}
+
+.test-voice-btn:hover,
+.test-voice-btn:active {
+    background: #45b7a8;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(78, 205, 196, 0.4);
+}
+
+.test-voice-btn:disabled {
+    background: #bdc3c7;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
 /* Modules Grid */
 .modules-grid {
     display: grid;
@@ -254,6 +345,33 @@ body {
     
     .app-header p {
         font-size: 1rem;
+    }
+    
+    .voice-info {
+        margin-top: 10px;
+        padding: 8px 12px;
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .voice-display {
+        flex-direction: column;
+        gap: 6px;
+    }
+    
+    #current-voice {
+        font-size: 0.85rem;
+    }
+    
+    .voice-selector {
+        min-width: 100px;
+        font-size: 0.8rem;
+        padding: 5px 10px;
+    }
+    
+    .test-voice-btn {
+        padding: 6px 12px;
+        font-size: 0.8rem;
     }
     
     .modules-grid {
