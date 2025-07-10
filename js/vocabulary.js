@@ -100,5 +100,27 @@ window.vocabulary = {
             { spanish: "piernas", hebrew: "רגליים", emoji: "🦵" },
             { spanish: "espalda", hebrew: "גב", emoji: "🏃‍♂️" }
         ]
+    },
+    
+    school: {
+        title: "Escuela",
+        hebrewTitle: "בית ספר",
+        items: [
+            { spanish: "maestro", hebrew: "מורה", emoji: "👨‍🏫" },
+            { spanish: "maestra", hebrew: "מורה", emoji: "👩‍🏫" },
+            { spanish: "estudiante", hebrew: "תלמיד", emoji: "🧑‍🎓" },
+            { spanish: "cuaderno", hebrew: "מחברת", emoji: "📒" },
+            { spanish: "lápiz", hebrew: "עיפרון", emoji: "✏️" },
+            { spanish: "bolígrafo", hebrew: "עט", emoji: "🖊️" },
+            { spanish: "libro", hebrew: "ספר", emoji: "📖" },
+            { spanish: "mochila", hebrew: "תיק", emoji: "🎒" },
+            { spanish: "pizarra", hebrew: "לוח", emoji: "📋" },
+            { spanish: "regla", hebrew: "סרגל", emoji: "📏" },
+            { spanish: "goma", hebrew: "מחק", emoji: "🗑️" },
+            { spanish: "tijeras", hebrew: "מספריים", emoji: "✂️" },
+            { spanish: "mesa", hebrew: "שולחן", emoji: "🪑" },
+            { spanish: "silla", hebrew: "כיסא", emoji: "💺" },
+            { spanish: "aula", hebrew: "כיתה", emoji: "🏫" }
+        ]
     }
 };
