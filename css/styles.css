@@ -492,3 +492,481 @@ body {
         text-rendering: optimizeLegibility;
     }
 }
+
+/* Test Mode Styles */
+.test-mode-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+}
+
+.test-mode-screen {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.test-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.exit-test-btn {
+    background: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.exit-test-btn:hover {
+    background: #ff5252;
+    transform: translateY(-2px);
+}
+
+.test-progress {
+    text-align: center;
+    flex-grow: 1;
+    margin-left: 20px;
+}
+
+#progress-text {
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.progress-bar {
+    width: 200px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4ecdc4, #45b7d1);
+    width: 0%;
+    transition: width 0.5s ease;
+    border-radius: 4px;
+}
+
+.test-question-container {
+    text-align: center;
+    color: white;
+}
+
+.test-instruction {
+    margin-bottom: 30px;
+}
+
+.test-instruction h3 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.test-instruction p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.test-item {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    padding: 40px;
+    margin-bottom: 30px;
+    backdrop-filter: blur(10px);
+}
+
+.test-emoji {
+    font-size: 6rem;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+.test-hebrew {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.8rem;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.test-controls {
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.microphone-btn {
+    background: #4ecdc4;
+    color: white;
+    border: none;
+    padding: 20px 40px;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(78, 205, 196, 0.4);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 auto;
+}
+
+.microphone-btn:hover {
+    background: #45b7a8;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(78, 205, 196, 0.5);
+}
+
+.microphone-btn:disabled {
+    background: #bdc3c7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.microphone-btn.listening {
+    background: #e74c3c;
+    animation: pulse 1s infinite;
+}
+
+.mic-icon {
+    font-size: 1.5rem;
+}
+
+.listening-indicator {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 15px;
+    background: rgba(231, 76, 60, 0.9);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: none;
+    align-items: center;
+    gap: 8px;
+}
+
+.listening-animation {
+    width: 12px;
+    height: 12px;
+    background: #fff;
+    border-radius: 50%;
+    animation: pulse 1s infinite;
+}
+
+.test-status {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 15px;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.test-results {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.results-content h2 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #fff;
+}
+
+.final-score {
+    margin-bottom: 40px;
+}
+
+#final-score-text {
+    font-size: 1.3rem;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.score-percentage {
+    font-family: 'Fredoka One', cursive;
+    font-size: 4rem;
+    color: #4ecdc4;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.results-actions {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.try-again-btn, .back-to-module-btn {
+    background: #4ecdc4;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(78, 205, 196, 0.3);
+}
+
+.try-again-btn:hover, .back-to-module-btn:hover {
+    background: #45b7a8;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(78, 205, 196, 0.4);
+}
+
+.back-to-module-btn {
+    background: #95a5a6;
+    box-shadow: 0 4px 15px rgba(149, 165, 166, 0.3);
+}
+
+.back-to-module-btn:hover {
+    background: #7f8c8d;
+    box-shadow: 0 6px 20px rgba(149, 165, 166, 0.4);
+}
+
+/* Celebration Container */
+.celebration-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2100;
+    overflow: hidden;
+}
+
+/* Test Mode Button */
+.test-mode-btn {
+    background: #f39c12;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-left: 10px;
+    box-shadow: 0 4px 15px rgba(243, 156, 18, 0.3);
+}
+
+.test-mode-btn:hover {
+    background: #e67e22;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(243, 156, 18, 0.4);
+}
+
+/* Celebration Animations */
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+@keyframes floatUp {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-400px);
+        opacity: 0;
+    }
+}
+
+@keyframes confettiFall {
+    from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(400px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes sparkleOut {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+@keyframes emojiBurst {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 1;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.5);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0;
+    }
+}
+
+@keyframes screenPulse {
+    0%, 100% {
+        transform: scale(1);
+        filter: hue-rotate(0deg);
+    }
+    50% {
+        transform: scale(1.02);
+        filter: hue-rotate(60deg);
+    }
+}
+
+/* Mobile Responsive for Test Mode */
+@media (max-width: 768px) {
+    .test-mode-screen {
+        padding: 20px;
+        margin: 10px;
+    }
+    
+    .test-header {
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+    
+    .test-progress {
+        margin-left: 0;
+    }
+    
+    .progress-bar {
+        width: 150px;
+    }
+    
+    .test-instruction h3 {
+        font-size: 1.5rem;
+    }
+    
+    .test-instruction p {
+        font-size: 1rem;
+    }
+    
+    .test-item {
+        padding: 30px 20px;
+    }
+    
+    .test-emoji {
+        font-size: 4rem;
+    }
+    
+    .test-hebrew {
+        font-size: 1.5rem;
+    }
+    
+    .microphone-btn {
+        padding: 15px 30px;
+        font-size: 1.1rem;
+    }
+    
+    .results-content h2 {
+        font-size: 2rem;
+    }
+    
+    .score-percentage {
+        font-size: 3rem;
+    }
+    
+    .results-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .try-again-btn, .back-to-module-btn {
+        width: 200px;
+        margin: 5px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .test-mode-screen {
+        padding: 15px;
+        margin: 5px;
+        max-height: 95vh;
+    }
+    
+    .test-instruction h3 {
+        font-size: 1.3rem;
+    }
+    
+    .test-emoji {
+        font-size: 3.5rem;
+    }
+    
+    .test-hebrew {
+        font-size: 1.3rem;
+    }
+    
+    .microphone-btn {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+    
+    .results-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .score-percentage {
+        font-size: 2.5rem;
+    }
+}

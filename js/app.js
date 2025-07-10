@@ -14,6 +14,10 @@ class SpanishApp {
         this.currentVoiceElement = document.getElementById('current-voice');
         this.testVoiceButton = document.getElementById('test-voice-btn');
         this.voiceSelector = document.getElementById('voice-selector');
+        this.testModeButton = document.getElementById('test-mode-btn');
+        
+        // Initialize test mode
+        this.testMode = null;
         
         this.init();
     }
@@ -22,6 +26,17 @@ class SpanishApp {
         this.setupEventListeners();
         this.showMainMenu();
         this.initializeVoiceSystem();
+        this.initializeTestMode();
+    }
+    
+    initializeTestMode() {
+        // Initialize test mode when TestMode class is available
+        if (window.TestMode) {
+            this.testMode = new window.TestMode(this);
+            console.log('✅ Test mode initialized');
+        } else {
+            console.warn('⚠️ TestMode class not available');
+        }
     }
     
     initializeVoiceSystem() {
@@ -191,6 +206,13 @@ class SpanishApp {
             this.showMainMenu();
         });
         
+        // Test mode button
+        if (this.testModeButton) {
+            this.testModeButton.addEventListener('click', () => {
+                this.startTestMode();
+            });
+        }
+        
         // Prevent context menu on long press (mobile)
         document.addEventListener('contextmenu', (e) => {
             e.preventDefault();
@@ -317,6 +339,28 @@ class SpanishApp {
     
     hideAudioFeedback() {
         this.audioFeedback.classList.remove('show');
+    }
+    
+    // Test mode methods
+    startTestMode() {
+        if (!this.testMode) {
+            console.warn('Test mode not initialized');
+            return;
+        }
+        
+        if (!this.currentModule) {
+            console.warn('No module selected for test');
+            return;
+        }
+        
+        // Check if speech recognition is supported
+        if (!window.spanishSpeechRecognition || !window.spanishSpeechRecognition.isRecognitionSupported()) {
+            alert('זיהוי קול לא נתמך בדפדפן זה. המבחן זמין רק בדפדפנים תומכים כמו Chrome.');
+            return;
+        }
+        
+        console.log('🎯 Starting test mode for module:', this.currentModule.title);
+        this.testMode.startTest(this.currentModule);
     }
     
     // Utility methods

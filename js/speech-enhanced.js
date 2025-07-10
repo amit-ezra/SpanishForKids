@@ -76,12 +76,13 @@ class EnhancedSpanishSpeech {
         this.voices = this.synth.getVoices();
         // Add a short delay to give browsers more time to load voices
         if (this.voices.length === 0) {
+            console.log('No voices loaded yet, will retry...');
             return new Promise(resolve => setTimeout(resolve, 1000))
                 .then(() => this.voices = this.synth.getVoices());
         }
         
         if (this.voices.length === 0) {
-            console.log('No voices loaded yet, will retry...');
+            console.log('No voices found');
             return;
         }
         
@@ -338,8 +339,105 @@ class EnhancedSpanishSpeech {
     }
 }
 
+// Speech Recognition for Test Mode
+class SpanishSpeechRecognition {
+    constructor() {
+        this.recognition = null;
+        this.isSupported = 'webkitSpeechRecognition' in window || 'SpeechRecognition' in window;
+        this.isListening = false;
+        this.onResult = null;
+        this.onError = null;
+        this.onStart = null;
+        this.onEnd = null;
+        
+        if (this.isSupported) {
+            this.initializeRecognition();
+        }
+    }
+    
+    initializeRecognition() {
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        this.recognition = new SpeechRecognition();
+        
+        // Configure for Spanish language
+        this.recognition.lang = 'es-ES';
+        this.recognition.continuous = false;
+        this.recognition.interimResults = false;
+        this.recognition.maxAlternatives = 3;
+        
+        // Event handlers
+        this.recognition.onstart = () => {
+            this.isListening = true;
+            console.log('🎤 Speech recognition started');
+            if (this.onStart) this.onStart();
+        };
+        
+        this.recognition.onresult = (event) => {
+            const results = Array.from(event.results);
+            const transcript = results[0][0].transcript.toLowerCase().trim();
+            const confidence = results[0][0].confidence;
+            
+            console.log('🔍 Speech recognition result:', transcript, 'confidence:', confidence);
+            
+            if (this.onResult) {
+                this.onResult(transcript, confidence);
+            }
+        };
+        
+        this.recognition.onerror = (event) => {
+            console.error('❌ Speech recognition error:', event.error);
+            this.isListening = false;
+            
+            if (this.onError) {
+                this.onError(event.error);
+            }
+        };
+        
+        this.recognition.onend = () => {
+            this.isListening = false;
+            console.log('🎤 Speech recognition ended');
+            if (this.onEnd) this.onEnd();
+        };
+    }
+    
+    startListening() {
+        if (!this.isSupported) {
+            console.warn('Speech recognition not supported');
+            return false;
+        }
+        
+        if (this.isListening) {
+            console.log('Already listening');
+            return false;
+        }
+        
+        try {
+            this.recognition.start();
+            return true;
+        } catch (error) {
+            console.error('Error starting speech recognition:', error);
+            return false;
+        }
+    }
+    
+    stopListening() {
+        if (this.recognition && this.isListening) {
+            this.recognition.stop();
+        }
+    }
+    
+    isCurrentlyListening() {
+        return this.isListening;
+    }
+    
+    isRecognitionSupported() {
+        return this.isSupported;
+    }
+}
+
 // Create global enhanced speech instance
 window.spanishSpeech = new EnhancedSpanishSpeech();
+window.spanishSpeechRecognition = new SpanishSpeechRecognition();
 
 // For debugging - add voice info to console
 setTimeout(() => {
@@ -348,5 +446,11 @@ setTimeout(() => {
         console.log('📝 Available Spanish voices:', 
             window.spanishSpeech.getAvailableSpanishVoices().map(v => v.name)
         );
+    }
+    
+    if (window.spanishSpeechRecognition.isRecognitionSupported()) {
+        console.log('🎤 Speech recognition supported');
+    } else {
+        console.warn('⚠️ Speech recognition not supported');
     }
 }, 2000);
