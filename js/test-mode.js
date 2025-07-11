@@ -73,10 +73,16 @@ class TestMode {
                     </div>
                     
                     <div class="test-controls">
-                        <button id="microphone-btn" class="microphone-btn">
-                            <span class="mic-icon">🎤</span>
-                            <span class="mic-text">לחץ כדי לדבר</span>
-                        </button>
+                        <div class="control-buttons">
+                            <button id="speaker-help-btn" class="speaker-help-btn">
+                                <span class="speaker-icon">🔊</span>
+                                <span class="speaker-text">שמע עזרה</span>
+                            </button>
+                            <button id="microphone-btn" class="microphone-btn">
+                                <span class="mic-icon">🎤</span>
+                                <span class="mic-text">לחץ כדי לדבר</span>
+                            </button>
+                        </div>
                         <div id="listening-indicator" class="listening-indicator">
                             <div class="listening-animation"></div>
                             <span>מקשיב...</span>
@@ -115,6 +121,7 @@ class TestMode {
         this.progressFill = this.testModeOverlay.querySelector('#progress-fill');
         this.questionContainer = this.testModeOverlay.querySelector('.test-question-container');
         this.microphoneButton = this.testModeOverlay.querySelector('#microphone-btn');
+        this.speakerHelpButton = this.testModeOverlay.querySelector('#speaker-help-btn');
         this.listeningIndicator = this.testModeOverlay.querySelector('#listening-indicator');
         this.statusText = this.testModeOverlay.querySelector('#test-status span');
         this.celebrationContainer = this.testModeOverlay.querySelector('#celebration-container');
@@ -133,6 +140,11 @@ class TestMode {
         // Microphone button
         this.microphoneButton.addEventListener('click', () => {
             this.startListening();
+        });
+        
+        // Speaker help button
+        this.speakerHelpButton.addEventListener('click', () => {
+            this.speakCurrentWord();
         });
         
         // Try again button
@@ -264,6 +276,38 @@ class TestMode {
         this.microphoneButton.classList.remove('listening');
         this.listeningIndicator.style.display = 'none';
         this.microphoneButton.disabled = false;
+    }
+    
+    async speakCurrentWord() {
+        if (!window.spanishSpeech || this.currentQuestionIndex >= this.questions.length) {
+            console.warn('Speech not available or no current question');
+            return;
+        }
+        
+        const currentQuestion = this.questions[this.currentQuestionIndex];
+        
+        // Disable the button temporarily to prevent spam clicking
+        this.speakerHelpButton.disabled = true;
+        this.speakerHelpButton.classList.add('speaking');
+        
+        // Update status to show help is being provided
+        const originalStatus = this.statusText.textContent;
+        this.statusText.textContent = '🔊 שומע איך אומרים: ' + currentQuestion.spanish;
+        
+        try {
+            // Speak the Spanish word
+            await window.spanishSpeech.speak(currentQuestion.spanish);
+            console.log('🔊 Help: Spoke word', currentQuestion.spanish);
+        } catch (error) {
+            console.error('Error speaking word:', error);
+        } finally {
+            // Re-enable the button and restore UI state
+            setTimeout(() => {
+                this.speakerHelpButton.disabled = false;
+                this.speakerHelpButton.classList.remove('speaking');
+                this.statusText.textContent = originalStatus;
+            }, 500);
+        }
     }
     
     processSpeechResult(transcript, confidence) {

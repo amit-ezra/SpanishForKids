@@ -624,6 +624,53 @@ body {
     position: relative;
 }
 
+.control-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+.speaker-help-btn {
+    background: #f39c12;
+    color: white;
+    border: none;
+    padding: 15px 25px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(243, 156, 18, 0.4);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.speaker-help-btn:hover {
+    background: #e67e22;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(243, 156, 18, 0.5);
+}
+
+.speaker-help-btn:disabled {
+    background: #bdc3c7;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: 0 4px 15px rgba(189, 195, 199, 0.3);
+}
+
+.speaker-help-btn.speaking {
+    background: #e67e22;
+    animation: speakerPulse 1s infinite;
+}
+
+.speaker-icon {
+    font-size: 1.2rem;
+}
+
 .microphone-btn {
     background: #4ecdc4;
     color: white;
@@ -638,7 +685,6 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin: 0 auto;
 }
 
 .microphone-btn:hover {
@@ -873,6 +919,11 @@ body {
     }
 }
 
+@keyframes speakerPulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.8; }
+}
+
 /* Mobile Responsive for Test Mode */
 @media (max-width: 768px) {
     .test-mode-screen {
@@ -912,6 +963,11 @@ body {
     
     .test-hebrew {
         font-size: 1.5rem;
+    }
+    
+    .speaker-help-btn {
+        padding: 12px 20px;
+        font-size: 0.9rem;
     }
     
     .microphone-btn {
@@ -955,6 +1011,11 @@ body {
     
     .test-hebrew {
         font-size: 1.3rem;
+    }
+    
+    .speaker-help-btn {
+        padding: 10px 15px;
+        font-size: 0.8rem;
     }
     
     .microphone-btn {

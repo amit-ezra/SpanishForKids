@@ -19,14 +19,153 @@ class SpanishApp {
         // Initialize test mode
         this.testMode = null;
         
+        // History management for Android back button
+        this.navigationHistory = [];
+        this.isNavigating = false;
+        
         this.init();
     }
     
     init() {
         this.setupEventListeners();
+        this.setupHistoryManagement();
         this.showMainMenu();
         this.initializeVoiceSystem();
         this.initializeTestMode();
+    }
+    
+    setupHistoryManagement() {
+        // Initialize with main menu state
+        this.pushState('main-menu', null);
+        
+        // Listen for browser back/forward events (including Android back button)
+        window.addEventListener('popstate', (event) => {
+            this.handlePopState(event);
+        });
+        
+        console.log('✅ History management initialized');
+    }
+    
+    pushState(screen, moduleId = null, testMode = false) {
+        if (this.isNavigating) return; // Prevent recursive calls
+        
+        const state = {
+            screen: screen,
+            moduleId: moduleId,
+            testMode: testMode,
+            timestamp: Date.now()
+        };
+        
+        let url = '#' + screen;
+        if (moduleId) {
+            url += '-' + moduleId;
+        }
+        if (testMode) {
+            url += '-test';
+        }
+        
+        try {
+            history.pushState(state, '', url);
+            console.log('📝 Pushed state:', state);
+        } catch (error) {
+            console.warn('Failed to push state:', error);
+        }
+    }
+    
+    handlePopState(event) {
+        if (this.isNavigating) return;
+        
+        this.isNavigating = true;
+        
+        const state = event.state;
+        console.log('⬅️ Handling popstate:', state);
+        
+        if (!state) {
+            // No state - we're at the beginning, show exit confirmation
+            this.handleAppExit();
+            this.isNavigating = false;
+            return;
+        }
+        
+        // Navigate based on state
+        switch (state.screen) {
+            case 'main-menu':
+                this.navigateToMainMenu();
+                break;
+            case 'module-screen':
+                if (state.moduleId) {
+                    this.navigateToModule(state.moduleId);
+                }
+                break;
+            case 'test-mode':
+                if (state.moduleId) {
+                    this.navigateToModule(state.moduleId);
+                    // Test mode will be handled by the test mode class
+                }
+                break;
+            default:
+                this.navigateToMainMenu();
+        }
+        
+        setTimeout(() => {
+            this.isNavigating = false;
+        }, 100);
+    }
+    
+    handleAppExit() {
+        // Show exit confirmation for Android users
+        const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        
+        if (isMobile) {
+            const shouldExit = confirm('האם אתה רוצה לצאת מהאפליקציה?');
+            if (shouldExit) {
+                // Let the browser handle the exit
+                window.history.back();
+            } else {
+                // Stay in app - push main menu state again
+                this.pushState('main-menu', null);
+            }
+        } else {
+            // On desktop, just go back to main menu
+            this.navigateToMainMenu();
+            this.pushState('main-menu', null);
+        }
+    }
+    
+    navigateToMainMenu() {
+        if (this.testMode && this.testMode.isActive) {
+            this.testMode.exitTestMode();
+        }
+        this.currentModule = null;
+        this.showMainMenu();
+    }
+    
+    navigateToModule(moduleId) {
+        if (this.testMode && this.testMode.isActive) {
+            this.testMode.exitTestMode();
+        }
+        
+        const module = window.vocabulary[moduleId];
+        if (module) {
+            this.currentModule = module;
+            this.currentScreen = 'module-screen';
+            
+            // Update UI
+            this.moduleTitle.textContent = `${module.title} - ${module.hebrewTitle}`;
+            this.mainMenuScreen.classList.remove('active');
+            this.moduleScreen.classList.add('active');
+            
+            // Load module items
+            this.loadModuleItems(module);
+            
+            // Update page title
+            document.title = `${module.title} - ¡Aprende Español!`;
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        } else {
+            this.navigateToMainMenu();
+        }
     }
     
     initializeTestMode() {
@@ -238,6 +377,11 @@ class SpanishApp {
         
         // Update page title
         document.title = '¡Aprende Español! - Learn Spanish for Kids';
+        
+        // Push history state if not already navigating
+        if (!this.isNavigating) {
+            this.pushState('main-menu', null);
+        }
     }
     
     openModule(moduleId) {
@@ -263,6 +407,11 @@ class SpanishApp {
         
         // Scroll to top
         window.scrollTo(0, 0);
+        
+        // Push history state if not already navigating
+        if (!this.isNavigating) {
+            this.pushState('module-screen', moduleId);
+        }
     }
     
     loadModuleItems(module) {
@@ -358,6 +507,9 @@ class SpanishApp {
             alert('זיהוי קול לא נתמך בדפדפן זה. המבחן זמין רק בדפדפנים תומכים כמו Chrome.');
             return;
         }
+        
+        // Push test mode state to history
+        this.pushState('test-mode', this.currentModule ? Object.keys(window.vocabulary).find(key => window.vocabulary[key] === this.currentModule) : null, true);
         
         console.log('🎯 Starting test mode for module:', this.currentModule.title);
         this.testMode.startTest(this.currentModule);
