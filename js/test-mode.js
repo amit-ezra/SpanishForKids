@@ -394,16 +394,18 @@ class TestMode {
     
     async handleCorrectAnswer() {
         this.score++;
-        this.statusText.textContent = '🎉 נכון! כל הכבוד!';
         
-        // Show random celebration
-        await this.showRandomCelebration();
+        // Show immediate success feedback
+        this.showSuccessOverlay();
+        
+        // Show enhanced celebration
+        await this.showEnhancedCelebration();
         
         // Move to next question after celebration
         setTimeout(() => {
             this.currentQuestionIndex++;
             this.showQuestion();
-        }, 3000);
+        }, 4500);
     }
     
     async handleIncorrectAnswer(question) {
@@ -572,6 +574,281 @@ class TestMode {
         setTimeout(() => {
             this.testModeScreen.style.animation = '';
         }, 2000);
+    }
+    
+    showSuccessOverlay() {
+        // Create immediate success feedback overlay
+        const successOverlay = document.createElement('div');
+        successOverlay.className = 'success-overlay';
+        successOverlay.innerHTML = `
+            <div class="success-content">
+                <div class="success-checkmark">✓</div>
+                <div class="success-text">נכון!</div>
+            </div>
+        `;
+        
+        this.celebrationContainer.appendChild(successOverlay);
+        
+        // Remove after animation
+        setTimeout(() => successOverlay.remove(), 2000);
+        
+        // Update status text with celebration
+        this.statusText.textContent = '🎉 נכון! כל הכבוד!';
+    }
+    
+    async showEnhancedCelebration() {
+        const celebrationType = this.celebrationTypes[Math.floor(Math.random() * this.celebrationTypes.length)];
+        const phrase = this.celebrationPhrases[celebrationType];
+        
+        console.log('🎉 Showing enhanced celebration:', celebrationType);
+        
+        // Play multiple layered sounds
+        this.playEnhancedSound();
+        
+        // Show screen-wide flash effect
+        this.showScreenFlash();
+        
+        // Show enhanced visual celebration
+        await this.showEnhancedVisualCelebration(celebrationType);
+        
+        // Show celebration phrase overlay
+        this.showCelebrationPhrase(phrase);
+        
+        // Play Spanish phrase
+        if (window.spanishSpeech) {
+            setTimeout(async () => {
+                await window.spanishSpeech.speak(phrase);
+            }, 800);
+        }
+    }
+    
+    playEnhancedSound() {
+        // Create multiple audio context sounds for layered effect
+        if (window.AudioContext || window.webkitAudioContext) {
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            
+            // Success chime
+            this.playTone(audioContext, 523.25, 0.3, 0.1); // C5
+            setTimeout(() => this.playTone(audioContext, 659.25, 0.3, 0.1), 100); // E5
+            setTimeout(() => this.playTone(audioContext, 783.99, 0.4, 0.2), 200); // G5
+            
+            // Add sparkle sounds
+            setTimeout(() => {
+                for (let i = 0; i < 5; i++) {
+                    setTimeout(() => {
+                        const freq = 800 + Math.random() * 800;
+                        this.playTone(audioContext, freq, 0.1, 0.05);
+                    }, i * 50);
+                }
+            }, 400);
+        }
+    }
+    
+    playTone(audioContext, frequency, volume, duration) {
+        const oscillator = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
+        
+        oscillator.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+        
+        oscillator.frequency.value = frequency;
+        oscillator.type = 'sine';
+        
+        gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+        gainNode.gain.linearRampToValueAtTime(volume, audioContext.currentTime + 0.01);
+        gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + duration);
+        
+        oscillator.start();
+        oscillator.stop(audioContext.currentTime + duration);
+    }
+    
+    showScreenFlash() {
+        const flashOverlay = document.createElement('div');
+        flashOverlay.className = 'screen-flash';
+        this.celebrationContainer.appendChild(flashOverlay);
+        
+        setTimeout(() => flashOverlay.remove(), 600);
+    }
+    
+    async showEnhancedVisualCelebration(type) {
+        this.celebrationContainer.innerHTML = '';
+        
+        // Add screen shake effect
+        this.testModeScreen.style.animation = 'celebrationShake 0.5s ease-in-out';
+        setTimeout(() => {
+            this.testModeScreen.style.animation = '';
+        }, 500);
+        
+        switch (type) {
+            case 'balloons':
+                this.showEnhancedBalloons();
+                break;
+            case 'confetti':
+                this.showEnhancedConfetti();
+                break;
+            case 'sparkles':
+                this.showEnhancedSparkles();
+                break;
+            case 'emojiBurst':
+                this.showEnhancedEmojiBurst();
+                break;
+            case 'screenPulse':
+                this.showEnhancedScreenPulse();
+                break;
+        }
+    }
+    
+    showEnhancedBalloons() {
+        const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#f39c12', '#e74c3c', '#9b59b6', '#2ecc71'];
+        
+        for (let i = 0; i < 12; i++) {
+            const balloon = document.createElement('div');
+            balloon.className = 'enhanced-balloon';
+            balloon.style.cssText = `
+                position: absolute;
+                width: ${50 + Math.random() * 30}px;
+                height: ${60 + Math.random() * 40}px;
+                background: radial-gradient(circle at 30% 30%, ${colors[i % colors.length]}, ${this.darkenColor(colors[i % colors.length])});
+                border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+                bottom: -100px;
+                left: ${Math.random() * 100}%;
+                animation: enhancedFloatUp 4s ease-out forwards;
+                animation-delay: ${Math.random() * 0.5}s;
+                z-index: 1100;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            `;
+            
+            // Add balloon string
+            const string = document.createElement('div');
+            string.style.cssText = `
+                position: absolute;
+                bottom: -20px;
+                left: 50%;
+                width: 2px;
+                height: 40px;
+                background: #333;
+                transform: translateX(-50%);
+            `;
+            balloon.appendChild(string);
+            
+            this.celebrationContainer.appendChild(balloon);
+            
+            setTimeout(() => balloon.remove(), 4000);
+        }
+    }
+    
+    showEnhancedConfetti() {
+        const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#f39c12', '#e74c3c', '#9b59b6', '#2ecc71', '#f1c40f'];
+        const shapes = ['circle', 'square', 'triangle'];
+        
+        for (let i = 0; i < 40; i++) {
+            const confetti = document.createElement('div');
+            const shape = shapes[Math.floor(Math.random() * shapes.length)];
+            const size = 6 + Math.random() * 8;
+            
+            confetti.className = `enhanced-confetti confetti-${shape}`;
+            confetti.style.cssText = `
+                position: absolute;
+                width: ${size}px;
+                height: ${size}px;
+                background: ${colors[Math.floor(Math.random() * colors.length)]};
+                top: -20px;
+                left: ${Math.random() * 100}%;
+                animation: enhancedConfettiFall ${3 + Math.random() * 2}s ease-out forwards;
+                animation-delay: ${Math.random() * 0.5}s;
+                z-index: 1100;
+                border-radius: ${shape === 'circle' ? '50%' : '0'};
+                transform: rotate(${Math.random() * 360}deg);
+            `;
+            
+            this.celebrationContainer.appendChild(confetti);
+            
+            setTimeout(() => confetti.remove(), 5000);
+        }
+    }
+    
+    showEnhancedSparkles() {
+        const sparkleEmojis = ['✨', '⭐', '🌟', '💫', '⚡'];
+        
+        for (let i = 0; i < 15; i++) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'enhanced-sparkle';
+            sparkle.textContent = sparkleEmojis[Math.floor(Math.random() * sparkleEmojis.length)];
+            sparkle.style.cssText = `
+                position: absolute;
+                font-size: ${20 + Math.random() * 25}px;
+                left: ${Math.random() * 100}%;
+                top: ${Math.random() * 100}%;
+                animation: enhancedSparkle 3s ease-out forwards;
+                animation-delay: ${Math.random() * 1}s;
+                z-index: 1100;
+                filter: drop-shadow(0 0 10px rgba(255,255,255,0.8));
+            `;
+            
+            this.celebrationContainer.appendChild(sparkle);
+            
+            setTimeout(() => sparkle.remove(), 3000);
+        }
+    }
+    
+    showEnhancedEmojiBurst() {
+        const emojis = ['🎉', '🌟', '👏', '🎊', '🔥', '💫', '🏆', '🎈', '🎆', '✨'];
+        
+        for (let i = 0; i < 10; i++) {
+            const emoji = document.createElement('div');
+            emoji.className = 'enhanced-emoji-burst';
+            emoji.textContent = emojis[i % emojis.length];
+            emoji.style.cssText = `
+                position: absolute;
+                font-size: ${30 + Math.random() * 20}px;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                animation: enhancedEmojiBurst 3s ease-out forwards;
+                animation-delay: ${i * 0.1}s;
+                z-index: 1100;
+                filter: drop-shadow(0 0 10px rgba(255,215,0,0.8));
+            `;
+            
+            this.celebrationContainer.appendChild(emoji);
+            
+            setTimeout(() => emoji.remove(), 3000);
+        }
+    }
+    
+    showEnhancedScreenPulse() {
+        this.testModeScreen.style.animation = 'enhancedScreenPulse 2.5s ease-out';
+        
+        // Add glow effect
+        this.testModeScreen.style.boxShadow = '0 0 50px rgba(78, 205, 196, 0.8)';
+        
+        setTimeout(() => {
+            this.testModeScreen.style.animation = '';
+            this.testModeScreen.style.boxShadow = '0 20px 60px rgba(0, 0, 0, 0.3)';
+        }, 2500);
+    }
+    
+    showCelebrationPhrase(phrase) {
+        const phraseOverlay = document.createElement('div');
+        phraseOverlay.className = 'celebration-phrase';
+        phraseOverlay.innerHTML = `
+            <div class="phrase-content">
+                <span class="phrase-text">${phrase}</span>
+            </div>
+        `;
+        
+        this.celebrationContainer.appendChild(phraseOverlay);
+        
+        setTimeout(() => phraseOverlay.remove(), 3000);
+    }
+    
+    darkenColor(color) {
+        // Simple color darkening function
+        const hex = color.replace('#', '');
+        const r = Math.max(0, parseInt(hex.substr(0, 2), 16) - 40);
+        const g = Math.max(0, parseInt(hex.substr(2, 2), 16) - 40);
+        const b = Math.max(0, parseInt(hex.substr(4, 2), 16) - 40);
+        return `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
     }
     
     showResults() {
