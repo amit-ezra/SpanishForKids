@@ -431,8 +431,13 @@ class SpanishApp {
         card.setAttribute('data-spanish', item.spanish);
         card.setAttribute('data-index', index);
         
+        // Handle both emoji and PNG icons
+        const imageContent = item.icon 
+            ? `<img src="${item.icon}" alt="${item.spanish}" class="item-icon">`
+            : item.emoji;
+            
         card.innerHTML = `
-            <div class="item-image">${item.emoji}</div>
+            <div class="item-image">${imageContent}</div>
             <h4>${item.spanish}</h4>
             <p>${item.hebrew}</p>
         `;
