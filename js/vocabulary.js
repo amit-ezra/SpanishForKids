@@ -95,7 +95,7 @@ window.vocabulary = {
             { spanish: "boca", hebrew: "פה", emoji: "👄" },
             { spanish: "orejas", hebrew: "אוזניים", emoji: "👂" },
             { spanish: "manos", hebrew: "ידיים", emoji: "👐" },
-            { spanish: "pies", hebrew: "רגליים", emoji: "🦶" },
+            { spanish: "pies", hebrew: "כפות רגליים", emoji: "🦶" },
             { spanish: "brazos", hebrew: "זרועות", emoji: "💪" },
             { spanish: "piernas", hebrew: "רגליים", emoji: "🦵" },
             { spanish: "espalda", hebrew: "גב", icon: "icons/body/back.png" }
