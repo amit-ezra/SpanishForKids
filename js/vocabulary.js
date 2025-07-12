@@ -116,11 +116,9 @@ window.vocabulary = {
             { spanish: "mochila", hebrew: "תיק", emoji: "🎒" },
             { spanish: "pizarra", hebrew: "לוח", emoji: "📋" },
             { spanish: "regla", hebrew: "סרגל", emoji: "📏" },
-            { spanish: "goma", hebrew: "מחק", emoji: "🗑️" },
             { spanish: "tijeras", hebrew: "מספריים", emoji: "✂️" },
             { spanish: "mesa", hebrew: "שולחן", icon: "icons/school/table.png" },
             { spanish: "silla", hebrew: "כיסא", emoji: "🪑" },
-            { spanish: "aula", hebrew: "כיתה", emoji: "🏫" }
         ]
     }
 };
