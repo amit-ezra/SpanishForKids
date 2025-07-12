@@ -89,7 +89,7 @@ window.vocabulary = {
         title: "Cuerpo",
         hebrewTitle: "גוף",
         items: [
-            { spanish: "cabeza", hebrew: "ראש", emoji: "💆" },
+            { spanish: "cabeza", hebrew: "ראש", icon: "icons/body/head.png" },
             { spanish: "ojos", hebrew: "עיניים", emoji: "👀" },
             { spanish: "nariz", hebrew: "אף", emoji: "👃" },
             { spanish: "boca", hebrew: "פה", emoji: "👄" },
@@ -98,7 +98,7 @@ window.vocabulary = {
             { spanish: "pies", hebrew: "רגליים", emoji: "🦶" },
             { spanish: "brazos", hebrew: "זרועות", emoji: "💪" },
             { spanish: "piernas", hebrew: "רגליים", emoji: "🦵" },
-            { spanish: "espalda", hebrew: "גב", emoji: "🏃‍♂️" }
+            { spanish: "espalda", hebrew: "גב", icon: "icons/body/back.png" }
         ]
     },
     
