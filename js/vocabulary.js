@@ -127,7 +127,9 @@ window.vocabulary = {
             { spanish: "A dormir", hebrew: "לישון", emoji: "😴" },
             { spanish: "A bañarse", hebrew: "להתרחץ", emoji: "🛁" },
             { spanish: "A vestirse", hebrew: "להתלבש", emoji: "👕" },
-            { spanish: "A jugar", hebrew: "לשחק", emoji: "🎮" }
+            { spanish: "A jugar", hebrew: "לשחק", emoji: "🎮" },
+            { spanish: "Tengo hambre", hebrew: "אני רעב", icon: "icons/activities/hungry.png" },
+            { spanish: "Quiero comer", hebrew: "אני רוצה לאכול", icon: "icons/activities/hungry.png" }
         ]
     }
 };
