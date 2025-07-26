@@ -81,7 +81,11 @@ window.vocabulary = {
             { spanish: "huevo", hebrew: "ביצה", emoji: "🥚" },
             { spanish: "carne", hebrew: "בשר", emoji: "🥩" },
             { spanish: "pescado", hebrew: "דג", emoji: "🐟" },
-            { spanish: "arroz", hebrew: "אורז", emoji: "🍚" }
+            { spanish: "arroz", hebrew: "אורז", emoji: "🍚" },
+            { spanish: "Tengo hambre", hebrew: "אני רעב", emoji: "😋" },
+            { spanish: "Tengo sed", hebrew: "אני צמא", emoji: "💧" },
+            { spanish: "Quiero comer", hebrew: "אני רוצה לאכול", emoji: "🍴" },
+            { spanish: "Quiero beber", hebrew: "אני רוצה לשתות", emoji: "🥤" }
         ]
     },
     
