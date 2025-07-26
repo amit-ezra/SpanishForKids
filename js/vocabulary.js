@@ -1,19 +1,19 @@
-// Vocabulary data for Spanish learning modules
+// Vocabulary data for Spanish learning app
 window.vocabulary = {
     numbers: {
         title: "Números",
         hebrewTitle: "מספרים",
         items: [
-            { spanish: "uno", hebrew: "אחד", emoji: "1️⃣" },
-            { spanish: "dos", hebrew: "שתיים", emoji: "2️⃣" },
-            { spanish: "tres", hebrew: "שלוש", emoji: "3️⃣" },
-            { spanish: "cuatro", hebrew: "ארבע", emoji: "4️⃣" },
-            { spanish: "cinco", hebrew: "חמש", emoji: "5️⃣" },
-            { spanish: "seis", hebrew: "שש", emoji: "6️⃣" },
-            { spanish: "siete", hebrew: "שבע", emoji: "7️⃣" },
-            { spanish: "ocho", hebrew: "שמונה", emoji: "8️⃣" },
-            { spanish: "nueve", hebrew: "תשע", emoji: "9️⃣" },
-            { spanish: "diez", hebrew: "עשר", emoji: "🔟" }
+            { spanish: "Uno", hebrew: "אחד", emoji: "1️⃣" },
+            { spanish: "Dos", hebrew: "שניים", emoji: "2️⃣" },
+            { spanish: "Tres", hebrew: "שלושה", emoji: "3️⃣" },
+            { spanish: "Cuatro", hebrew: "ארבעה", emoji: "4️⃣" },
+            { spanish: "Cinco", hebrew: "חמישה", emoji: "5️⃣" },
+            { spanish: "Seis", hebrew: "שישה", emoji: "6️⃣" },
+            { spanish: "Siete", hebrew: "שבעה", emoji: "7️⃣" },
+            { spanish: "Ocho", hebrew: "שמונה", emoji: "8️⃣" },
+            { spanish: "Nueve", hebrew: "תשעה", emoji: "9️⃣" },
+            { spanish: "Diez", hebrew: "עשרה", emoji: "🔟" }
         ]
     },
     
@@ -21,16 +21,16 @@ window.vocabulary = {
         title: "Colores",
         hebrewTitle: "צבעים",
         items: [
-            { spanish: "rojo", hebrew: "אדום", emoji: "🔴" },
-            { spanish: "azul", hebrew: "כחול", emoji: "🔵" },
-            { spanish: "verde", hebrew: "ירוק", emoji: "🟢" },
-            { spanish: "amarillo", hebrew: "צהוב", emoji: "🟡" },
-            { spanish: "naranja", hebrew: "כתום", emoji: "🟠" },
-            { spanish: "morado", hebrew: "סגול", emoji: "🟣" },
-            { spanish: "rosa", hebrew: "ורוד", emoji: "🩷" },
-            { spanish: "negro", hebrew: "שחור", emoji: "⚫" },
-            { spanish: "blanco", hebrew: "לבן", emoji: "⚪" },
-            { spanish: "marrón", hebrew: "חום", emoji: "🤎" }
+            { spanish: "Rojo", hebrew: "אדום", emoji: "🔴" },
+            { spanish: "Azul", hebrew: "כחול", emoji: "🔵" },
+            { spanish: "Verde", hebrew: "ירוק", emoji: "🟢" },
+            { spanish: "Amarillo", hebrew: "צהוב", emoji: "🟡" },
+            { spanish: "Naranja", hebrew: "כתום", emoji: "🟠" },
+            { spanish: "Morado", hebrew: "סגול", emoji: "🟣" },
+            { spanish: "Rosa", hebrew: "ורוד", emoji: "🩷" },
+            { spanish: "Negro", hebrew: "שחור", emoji: "⚫" },
+            { spanish: "Blanco", hebrew: "לבן", emoji: "⚪" },
+            { spanish: "Marrón", hebrew: "חום", emoji: "🤎" }
         ]
     },
     
@@ -38,16 +38,16 @@ window.vocabulary = {
         title: "Familia",
         hebrewTitle: "משפחה",
         items: [
-            { spanish: "padre", hebrew: "אבא", emoji: "👨" },
-            { spanish: "madre", hebrew: "אמא", emoji: "👩" },
-            { spanish: "hijo", hebrew: "בן", emoji: "👦" },
-            { spanish: "hija", hebrew: "בת", emoji: "👧" },
-            { spanish: "hermano", hebrew: "אח", emoji: "👱‍♂️" },
-            { spanish: "hermana", hebrew: "אחות", emoji: "👱‍♀️" },
-            { spanish: "abuelo", hebrew: "סבא", emoji: "👴" },
-            { spanish: "abuela", hebrew: "סבתא", emoji: "👵" },
-            { spanish: "tío", hebrew: "דוד", emoji: "👨‍🦳" },
-            { spanish: "tía", hebrew: "דודה", emoji: "👩‍🦳" }
+            { spanish: "Papá", hebrew: "אבא", emoji: "👨" },
+            { spanish: "Mamá", hebrew: "אמא", emoji: "👩" },
+            { spanish: "Hijo", hebrew: "בן", emoji: "👦" },
+            { spanish: "Hija", hebrew: "בת", emoji: "👧" },
+            { spanish: "Abuelo", hebrew: "סבא", emoji: "👴" },
+            { spanish: "Abuela", hebrew: "סבתא", emoji: "👵" },
+            { spanish: "Hermano", hebrew: "אח", emoji: "👨‍🦱" },
+            { spanish: "Hermana", hebrew: "אחות", emoji: "👩‍🦱" },
+            { spanish: "Bebé", hebrew: "תינוק", emoji: "👶" },
+            { spanish: "Familia", hebrew: "משפחה", emoji: "👨‍👩‍👧‍👦" }
         ]
     },
     
@@ -55,16 +55,16 @@ window.vocabulary = {
         title: "Animales",
         hebrewTitle: "חיות",
         items: [
-            { spanish: "perro", hebrew: "כלב", emoji: "🐕" },
-            { spanish: "gato", hebrew: "חתול", emoji: "🐱" },
-            { spanish: "pájaro", hebrew: "ציפור", emoji: "🐦" },
-            { spanish: "pez", hebrew: "דג", emoji: "🐠" },
-            { spanish: "conejo", hebrew: "ארנב", emoji: "🐰" },
-            { spanish: "ratón", hebrew: "עכבר", emoji: "🐭" },
-            { spanish: "caballo", hebrew: "סוס", emoji: "🐎" },
-            { spanish: "vaca", hebrew: "פרה", emoji: "🐄" },
-            { spanish: "cerdo", hebrew: "חזיר", emoji: "🐷" },
-            { spanish: "elefante", hebrew: "פיל", emoji: "🐘" }
+            { spanish: "Perro", hebrew: "כלב", emoji: "🐕" },
+            { spanish: "Gato", hebrew: "חתול", emoji: "🐱" },
+            { spanish: "Pájaro", hebrew: "ציפור", emoji: "🐦" },
+            { spanish: "Pez", hebrew: "דג", emoji: "🐟" },
+            { spanish: "Caballo", hebrew: "סוס", emoji: "🐴" },
+            { spanish: "Vaca", hebrew: "פרה", emoji: "🐄" },
+            { spanish: "Cerdo", hebrew: "חזיר", emoji: "🐷" },
+            { spanish: "Pollo", hebrew: "תרנגול", emoji: "🐔" },
+            { spanish: "Conejo", hebrew: "ארנב", emoji: "🐰" },
+            { spanish: "León", hebrew: "אריה", emoji: "🦁" }
         ]
     },
     
@@ -72,20 +72,16 @@ window.vocabulary = {
         title: "Comida",
         hebrewTitle: "אוכל",
         items: [
-            { spanish: "manzana", hebrew: "תפוח", emoji: "🍎" },
-            { spanish: "plátano", hebrew: "בננה", emoji: "🍌" },
-            { spanish: "naranja", hebrew: "תפוז", emoji: "🍊" },
-            { spanish: "pan", hebrew: "לחם", emoji: "🍞" },
-            { spanish: "leche", hebrew: "חלב", emoji: "🥛" },
-            { spanish: "queso", hebrew: "גבינה", emoji: "🧀" },
-            { spanish: "huevo", hebrew: "ביצה", emoji: "🥚" },
-            { spanish: "carne", hebrew: "בשר", emoji: "🥩" },
-            { spanish: "pescado", hebrew: "דג", emoji: "🐟" },
-            { spanish: "arroz", hebrew: "אורז", emoji: "🍚" },
-            { spanish: "Tengo hambre", hebrew: "אני רעב", emoji: "😋" },
-            { spanish: "Tengo sed", hebrew: "אני צמא", emoji: "💧" },
-            { spanish: "Quiero comer", hebrew: "אני רוצה לאכול", emoji: "🍴" },
-            { spanish: "Quiero beber", hebrew: "אני רוצה לשתות", emoji: "🥤" }
+            { spanish: "Manzana", hebrew: "תפוח", emoji: "🍎" },
+            { spanish: "Plátano", hebrew: "בננה", emoji: "🍌" },
+            { spanish: "Pan", hebrew: "לחם", emoji: "🍞" },
+            { spanish: "Leche", hebrew: "חלב", emoji: "🥛" },
+            { spanish: "Queso", hebrew: "גבינה", emoji: "🧀" },
+            { spanish: "Huevo", hebrew: "ביצה", emoji: "🥚" },
+            { spanish: "Pollo", hebrew: "עוף", emoji: "🍗" },
+            { spanish: "Arroz", hebrew: "אורז", emoji: "🍚" },
+            { spanish: "Agua", hebrew: "מים", emoji: "💧" },
+            { spanish: "Galleta", hebrew: "עוגייה", emoji: "🍪" }
         ]
     },
     
@@ -93,16 +89,16 @@ window.vocabulary = {
         title: "Cuerpo",
         hebrewTitle: "גוף",
         items: [
-            { spanish: "cabeza", hebrew: "ראש", icon: "icons/body/head.png" },
-            { spanish: "ojos", hebrew: "עיניים", emoji: "👀" },
-            { spanish: "nariz", hebrew: "אף", emoji: "👃" },
-            { spanish: "boca", hebrew: "פה", emoji: "👄" },
-            { spanish: "orejas", hebrew: "אוזניים", emoji: "👂" },
-            { spanish: "manos", hebrew: "ידיים", emoji: "👐" },
-            { spanish: "pies", hebrew: "כפות רגליים", emoji: "🦶" },
-            { spanish: "brazos", hebrew: "זרועות", emoji: "💪" },
-            { spanish: "piernas", hebrew: "רגליים", emoji: "🦵" },
-            { spanish: "espalda", hebrew: "גב", icon: "icons/body/back.png" }
+            { spanish: "Cabeza", hebrew: "ראש", emoji: "👤" },
+            { spanish: "Ojos", hebrew: "עיניים", emoji: "👀" },
+            { spanish: "Nariz", hebrew: "אף", emoji: "👃" },
+            { spanish: "Boca", hebrew: "פה", emoji: "👄" },
+            { spanish: "Oreja", hebrew: "אוזן", emoji: "👂" },
+            { spanish: "Manos", hebrew: "ידיים", emoji: "👐" },
+            { spanish: "Pies", hebrew: "רגליים", emoji: "👣" },
+            { spanish: "Brazos", hebrew: "זרועות", emoji: "💪" },
+            { spanish: "Piernas", hebrew: "רגליים", emoji: "🦵" },
+            { spanish: "Espalda", hebrew: "גב", icon: "icons/body/back.png" }
         ]
     },
     
@@ -110,19 +106,30 @@ window.vocabulary = {
         title: "Escuela",
         hebrewTitle: "בית ספר",
         items: [
-            { spanish: "maestro", hebrew: "מורה", emoji: "👨‍🏫" },
-            { spanish: "maestra", hebrew: "מורה", emoji: "👩‍🏫" },
-            { spanish: "estudiante", hebrew: "תלמיד", emoji: "🧑‍🎓" },
-            { spanish: "cuaderno", hebrew: "מחברת", emoji: "📒" },
-            { spanish: "lápiz", hebrew: "עיפרון", emoji: "✏️" },
-            { spanish: "bolígrafo", hebrew: "עט", emoji: "🖊️" },
-            { spanish: "libro", hebrew: "ספר", emoji: "📖" },
-            { spanish: "mochila", hebrew: "תיק", emoji: "🎒" },
-            { spanish: "pizarra", hebrew: "לוח", emoji: "📋" },
-            { spanish: "regla", hebrew: "סרגל", emoji: "📏" },
-            { spanish: "tijeras", hebrew: "מספריים", emoji: "✂️" },
-            { spanish: "mesa", hebrew: "שולחן", icon: "icons/school/table.png" },
-            { spanish: "silla", hebrew: "כיסא", emoji: "🪑" },
+            { spanish: "Libro", hebrew: "ספר", emoji: "📚" },
+            { spanish: "Lápiz", hebrew: "עיפרון", emoji: "✏️" },
+            { spanish: "Mesa", hebrew: "שולחן", icon: "icons/school/table.png" },
+            { spanish: "Silla", hebrew: "כיסא", emoji: "🪑" },
+            { spanish: "Pizarra", hebrew: "לוח", emoji: "📝" },
+            { spanish: "Profesor", hebrew: "מורה", emoji: "👨‍🏫" },
+            { spanish: "Estudiante", hebrew: "תלמיד", emoji: "🧑‍🎓" },
+            { spanish: "Mochila", hebrew: "תיק", emoji: "🎒" },
+            { spanish: "Regla", hebrew: "סרגל", emoji: "📏" },
+            { spanish: "Papel", hebrew: "נייר", emoji: "📄" }
+        ]
+    },
+    
+    activities: {
+        title: "Actividades Diarias",
+        hebrewTitle: "פעילויות יומיות",
+        items: [
+            { spanish: "A lavarse las manos", hebrew: "לשטוף ידיים", emoji: "🧼" },
+            { spanish: "A dormir", hebrew: "לישון", emoji: "😴" },
+            { spanish: "A bañarse", hebrew: "להתרחץ", emoji: "🛁" },
+            { spanish: "A vestirse", hebrew: "להתלבש", emoji: "👕" },
+            { spanish: "A jugar", hebrew: "לשחק", emoji: "🎮" }
         ]
     }
 };
+
+console.log('✅ Vocabulary data loaded successfully');
