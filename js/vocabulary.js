@@ -13,7 +13,17 @@ window.vocabulary = {
             { spanish: "Siete", hebrew: "שבעה", emoji: "7️⃣" },
             { spanish: "Ocho", hebrew: "שמונה", emoji: "8️⃣" },
             { spanish: "Nueve", hebrew: "תשעה", emoji: "9️⃣" },
-            { spanish: "Diez", hebrew: "עשרה", emoji: "🔟" }
+            { spanish: "Diez", hebrew: "עשרה", emoji: "🔟" },
+            { spanish: "Once", hebrew: "אחד עשר", emoji: "1️⃣1️⃣" },
+            { spanish: "Doce", hebrew: "שתים עשרה", emoji: "1️⃣2️⃣" },
+            { spanish: "Trece", hebrew: "שלוש עשרה", emoji: "1️⃣3️⃣" },
+            { spanish: "Catorce", hebrew: "ארבע עשרה", emoji: "1️⃣4️⃣" },
+            { spanish: "Quince", hebrew: "חמש עשרה", emoji: "1️⃣5️⃣" },
+            { spanish: "Dieciséis", hebrew: "שש עשרה", emoji: "1️⃣6️⃣" },
+            { spanish: "Diecisiete", hebrew: "שבע עשרה", emoji: "1️⃣7️⃣" },
+            { spanish: "Dieciocho", hebrew: "שמונה עשרה", emoji: "1️⃣8️⃣" },
+            { spanish: "Diecinueve", hebrew: "תשע עשרה", emoji: "1️⃣9️⃣" },
+            { spanish: "Veinte", hebrew: "עשרים", emoji: "2️⃣0️⃣" }
         ]
     },
     
