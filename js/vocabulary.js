@@ -1,5 +1,38 @@
 // Vocabulary data for Spanish learning app
 window.vocabulary = {
+    alphabet: {
+        title: "Abecedario",
+        hebrewTitle: "אלפבית",
+        items: [
+            { spanish: "A", hebrew: "א", emoji: "🇦" },
+            { spanish: "B", hebrew: "ב", emoji: "🇧" },
+            { spanish: "C", hebrew: "ג", emoji: "🇨" },
+            { spanish: "D", hebrew: "ד", emoji: "🇩" },
+            { spanish: "E", hebrew: "ה", emoji: "🇪" },
+            { spanish: "F", hebrew: "ו", emoji: "🇫" },
+            { spanish: "G", hebrew: "ז", emoji: "🇬" },
+            { spanish: "H", hebrew: "ח", emoji: "🇭" },
+            { spanish: "I", hebrew: "ט", emoji: "🇮" },
+            { spanish: "J", hebrew: "י", emoji: "🇯" },
+            { spanish: "K", hebrew: "כ", emoji: "🇰" },
+            { spanish: "L", hebrew: "ל", emoji: "🇱" },
+            { spanish: "M", hebrew: "מ", emoji: "🇲" },
+            { spanish: "N", hebrew: "נ", emoji: "🇳" },
+            { spanish: "Ñ", hebrew: "ני", emoji: "🇪🇸" },
+            { spanish: "O", hebrew: "ס", emoji: "🇴" },
+            { spanish: "P", hebrew: "ע", emoji: "🇵" },
+            { spanish: "Q", hebrew: "פ", emoji: "🇶" },
+            { spanish: "R", hebrew: "צ", emoji: "🇷" },
+            { spanish: "S", hebrew: "ק", emoji: "🇸" },
+            { spanish: "T", hebrew: "ר", emoji: "🇹" },
+            { spanish: "U", hebrew: "ש", emoji: "🇺" },
+            { spanish: "V", hebrew: "ת", emoji: "🇻" },
+            { spanish: "W", hebrew: "ו כפולה", emoji: "🇼" },
+            { spanish: "X", hebrew: "איקס", emoji: "🇽" },
+            { spanish: "Y", hebrew: "איגרגה", emoji: "🇾" },
+            { spanish: "Z", hebrew: "זטה", emoji: "🇿" }
+        ]
+    },
     numbers: {
         title: "Números",
         hebrewTitle: "מספרים",
