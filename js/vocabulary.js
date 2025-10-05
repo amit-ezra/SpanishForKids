@@ -216,6 +216,38 @@ window.vocabulary = {
             { spanish: "Tengo sed", hebrew: "אני צמא", icon: "icons/activities/drink-water.png" },
             { spanish: "Quiero beber", hebrew: "אני רוצה לשתות", icon: "icons/activities/drink-water.png" }
         ]
+    },
+    
+    household: {
+        title: "Objetos de la Casa",
+        hebrewTitle: "חפצים בבית",
+        items: [
+            { spanish: "Mesa", hebrew: "שולחן", icon: "icons/school/table.png" },
+            { spanish: "Silla", hebrew: "כיסא", emoji: "🪑" },
+            { spanish: "Cama", hebrew: "מיטה", emoji: "🛏️" },
+            { spanish: "Colchón", hebrew: "מזרן", emoji: "🛏️" },
+            { spanish: "Sofá", hebrew: "ספה", emoji: "🛋️" },
+            { spanish: "Lámpara", hebrew: "מנורה", emoji: "💡" },
+            { spanish: "Reloj", hebrew: "שעון", emoji: "⏰" },
+            { spanish: "Puerta", hebrew: "דלת", emoji: "🚪" },
+            { spanish: "Ventana", hebrew: "חלון", emoji: "🖼️" },
+            { spanish: "Refrigerador", hebrew: "מקרר", emoji: "🧊" }
+        ]
+    },
+    
+    transportation: {
+        title: "Transporte",
+        hebrewTitle: "תחבורה",
+        items: [
+            { spanish: "Avión", hebrew: "מטוס", emoji: "✈️" },
+            { spanish: "Autobús", hebrew: "אוטובוס", emoji: "🚌" },
+            { spanish: "Helicóptero", hebrew: "מסוק", emoji: "🚁" },
+            { spanish: "Coche", hebrew: "מכונית", emoji: "🚗" },
+            { spanish: "Ambulancia", hebrew: "אמבולנס", emoji: "🚑" },
+            { spanish: "Coche de policía", hebrew: "ניידת משטרה", emoji: "🚓" },
+            { spanish: "Camión de bomberos", hebrew: "כבאית", emoji: "🚒" },
+            { spanish: "Camión", hebrew: "משאית", emoji: "🚚" }
+        ]
     }
 };
 
