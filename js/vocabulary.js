@@ -134,7 +134,19 @@ window.vocabulary = {
             { spanish: "Pollo", hebrew: "עוף", emoji: "🍗" },
             { spanish: "Arroz", hebrew: "אורז", emoji: "🍚" },
             { spanish: "Agua", hebrew: "מים", emoji: "💧" },
-            { spanish: "Galleta", hebrew: "עוגייה", emoji: "🍪" }
+            { spanish: "Galleta", hebrew: "עוגייה", emoji: "🍪" },
+            { spanish: "Tomate", hebrew: "עגבנייה", emoji: "🍅" },
+            { spanish: "Patata", hebrew: "תפוח אדמה", emoji: "🥔" },
+            { spanish: "Zanahoria", hebrew: "גזר", emoji: "🥕" },
+            { spanish: "Fresa", hebrew: "תות", emoji: "🍓" },
+            { spanish: "Naranja", hebrew: "תפוז", emoji: "🍊" },
+            { spanish: "Uvas", hebrew: "ענבים", emoji: "🍇" },
+            { spanish: "Pescado", hebrew: "דג", emoji: "🐟" },
+            { spanish: "Carne", hebrew: "בשר", emoji: "🥩" },
+            { spanish: "Helado", hebrew: "גלידה", emoji: "🍦" },
+            { spanish: "Pastel", hebrew: "עוגה", emoji: "🍰" },
+            { spanish: "Pepino", hebrew: "מלפפון", emoji: "🥒" },
+            { spanish: "Lechuga", hebrew: "חסה", emoji: "🥬" }
         ]
     },
     
