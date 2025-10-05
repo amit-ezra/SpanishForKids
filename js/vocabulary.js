@@ -107,7 +107,17 @@ window.vocabulary = {
             { spanish: "Cerdo", hebrew: "חזיר", emoji: "🐷" },
             { spanish: "Pollo", hebrew: "תרנגול", emoji: "🐔" },
             { spanish: "Conejo", hebrew: "ארנב", emoji: "🐰" },
-            { spanish: "León", hebrew: "אריה", emoji: "🦁" }
+            { spanish: "León", hebrew: "אריה", emoji: "🦁" },
+            { spanish: "Tigre", hebrew: "נמר", emoji: "🐅" },
+            { spanish: "Oso", hebrew: "דוב", emoji: "🐻" },
+            { spanish: "Mono", hebrew: "קוף", emoji: "🐒" },
+            { spanish: "Elefante", hebrew: "פיל", emoji: "🐘" },
+            { spanish: "Jirafa", hebrew: "ג'ירפה", emoji: "🦒" },
+            { spanish: "Cebra", hebrew: "זברה", emoji: "🦓" },
+            { spanish: "Rana", hebrew: "צפרדע", emoji: "🐸" },
+            { spanish: "Serpiente", hebrew: "נחש", emoji: "🐍" },
+            { spanish: "Búho", hebrew: "ינשוף", emoji: "🦉" },
+            { spanish: "Mariposa", hebrew: "פרפר", emoji: "🦋" }
         ]
     },
     
