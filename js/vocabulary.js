@@ -146,7 +146,25 @@ window.vocabulary = {
             { spanish: "Helado", hebrew: "גלידה", emoji: "🍦" },
             { spanish: "Pastel", hebrew: "עוגה", emoji: "🍰" },
             { spanish: "Pepino", hebrew: "מלפפון", emoji: "🥒" },
-            { spanish: "Lechuga", hebrew: "חסה", emoji: "🥬" }
+            { spanish: "Lechuga", hebrew: "חסה", emoji: "🥬" },
+            { spanish: "Brócoli", hebrew: "ברוקולי", emoji: "🥦" },
+            { spanish: "Maíz", hebrew: "תירס", emoji: "🌽" },
+            { spanish: "Champiñón", hebrew: "פטריות", emoji: "🍄" },
+            { spanish: "Piña", hebrew: "אננס", emoji: "🍍" },
+            { spanish: "Sandía", hebrew: "אבטיח", emoji: "🍉" },
+            { spanish: "Limón", hebrew: "לימון", emoji: "🍋" },
+            { spanish: "Aguacate", hebrew: "אבוקדו", emoji: "🥑" },
+            { spanish: "Cebolla", hebrew: "בצל", emoji: "🧅" },
+            { spanish: "Ajo", hebrew: "שום", emoji: "🧄" },
+            { spanish: "Pimiento", hebrew: "פלפל", emoji: "🌶️" },
+            { spanish: "Cereza", hebrew: "דובדבן", emoji: "🍒" },
+            { spanish: "Melocotón", hebrew: "אפרסק", emoji: "🍑" },
+            { spanish: "Pera", hebrew: "אגס", emoji: "🍐" },
+            { spanish: "Coco", hebrew: "קוקוס", emoji: "🥥" },
+            { spanish: "Berenjena", hebrew: "חציל", emoji: "🍆" },
+            { spanish: "Calabaza", hebrew: "דלעת", emoji: "🎃" },
+            { spanish: "Sopa", hebrew: "מרק", emoji: "🥣" },
+            { spanish: "Chocolate", hebrew: "שוקולד", emoji: "🍫" }
         ]
     },
     
