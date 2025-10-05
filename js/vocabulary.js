@@ -263,6 +263,33 @@ window.vocabulary = {
             { spanish: "Camión de bomberos", hebrew: "כבאית", emoji: "🚒" },
             { spanish: "Camión", hebrew: "משאית", emoji: "🚚" }
         ]
+    },
+    
+    weather: {
+        title: "Clima",
+        hebrewTitle: "מזג אוויר",
+        items: [
+            { spanish: "Sol", hebrew: "שמש", emoji: "☀️" },
+            { spanish: "Nubes", hebrew: "עננים", emoji: "☁️" },
+            { spanish: "Lluvia", hebrew: "גשם", emoji: "🌧️" },
+            { spanish: "Frío", hebrew: "קר", emoji: "🥶" },
+            { spanish: "Calor", hebrew: "חם", emoji: "🔥" },
+            { spanish: "Trueno", hebrew: "רעם", emoji: "⛈️" },
+            { spanish: "Relámpago", hebrew: "ברק", emoji: "⚡" },
+            { spanish: "Nieve", hebrew: "שלג", emoji: "❄️" },
+            { spanish: "Granizo", hebrew: "ברד", emoji: "🌨️" },
+            { spanish: "Atardecer", hebrew: "שקיעה", emoji: "🌇" },
+            { spanish: "Amanecer", hebrew: "זריחה", emoji: "🌅" },
+            { spanish: "Luna", hebrew: "ירח", emoji: "🌙" },
+            { spanish: "Estrellas", hebrew: "כוכבים", emoji: "⭐" },
+            { spanish: "Viento", hebrew: "רוח", emoji: "🌬️" },
+            { spanish: "Niebla", hebrew: "ערפל", emoji: "🌫️" },
+            { spanish: "Tormenta", hebrew: "סופה", emoji: "⛈️" },
+            { spanish: "Arcoíris", hebrew: "קשת בענן", emoji: "🌈" },
+            { spanish: "Tornado", hebrew: "טורנדו", emoji: "🌪️" },
+            { spanish: "Huracán", hebrew: "הוריקן", emoji: "🌀" },
+            { spanish: "Hielo", hebrew: "קרח", emoji: "🧊" }
+        ]
     }
 };
 
