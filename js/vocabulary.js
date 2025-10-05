@@ -234,6 +234,21 @@ window.vocabulary = {
             { spanish: "Refrigerador", hebrew: "מקרר", emoji: "🧊" }
         ]
     },
+
+    kitchen: {
+        title: "Cocina",
+        hebrewTitle: "מטבח",
+        items: [
+            { spanish: "Vaso", hebrew: "כוס", emoji: "🥛" },
+            { spanish: "Plato", hebrew: "צלחת", emoji: "🍽️" },
+            { spanish: "Cuchara", hebrew: "כף", emoji: "🥄" },
+            { spanish: "Tenedor", hebrew: "מזלג", emoji: "🍴" },
+            { spanish: "Cuchillo", hebrew: "סכין", emoji: "🔪" },
+            { spanish: "Grifo", hebrew: "ברז", emoji: "🚰" },
+            { spanish: "Agua", hebrew: "מים", emoji: "💧" },
+            { spanish: "Cubiertos", hebrew: "סכו\"ם", emoji: "🍴" }
+        ]
+    },
     
     transportation: {
         title: "Transporte",
