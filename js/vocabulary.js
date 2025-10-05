@@ -290,6 +290,22 @@ window.vocabulary = {
             { spanish: "Huracán", hebrew: "הוריקן", emoji: "🌀" },
             { spanish: "Hielo", hebrew: "קרח", emoji: "🧊" }
         ]
+    },
+    
+    sports: {
+        title: "Deportes",
+        hebrewTitle: "ספורט",
+        items: [
+            { spanish: "Fútbol", hebrew: "כדורגל", emoji: "⚽" },
+            { spanish: "Baloncesto", hebrew: "כדורסל", emoji: "🏀" },
+            { spanish: "Nadar", hebrew: "לשחות", emoji: "🏊‍♀️" },
+            { spanish: "Correr", hebrew: "לרוץ", emoji: "🏃‍♀️" },
+            { spanish: "Ciclismo", hebrew: "רכיבה על אופניים", emoji: "🚴‍♀️" },
+            { spanish: "Voleibol", hebrew: "כדורעף", emoji: "🏐" },
+            { spanish: "Bicicleta", hebrew: "אופניים", emoji: "🚲" },
+            { spanish: "Saltar", hebrew: "לקפוץ", emoji: "🤸" },
+            { spanish: "Patear", hebrew: "לבעוט", emoji: "🦵" }
+        ]
     }
 };
 
