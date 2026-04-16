@@ -126,7 +126,7 @@ window.vocabulary = {
         hebrewTitle: "אוכל",
         items: [
             { spanish: "Manzana", hebrew: "תפוח", emoji: "🍎" },
-            { spanish: "Plátano", hebrew: "בננה", emoji: "🍌" },
+            { spanish: "Banana", hebrew: "בננה", emoji: "🍌" },
             { spanish: "Pan", hebrew: "לחם", emoji: "🍞" },
             { spanish: "Leche", hebrew: "חלב", emoji: "🥛" },
             { spanish: "Queso", hebrew: "גבינה", emoji: "🧀" },
